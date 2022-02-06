@@ -1,7 +1,16 @@
 // == Import npm
 import React from 'react';
-import SideBar from './SideBar';
 import { Route, Switch } from 'react-router-dom';
+import SideBar from './SideBar';
+import Inventories from '../Inventories';
+import NewInventory from '../NewInventory';
+import Profil from '../Profil';
+import Settings from '../Settings';
+import Templates from '../Templates';
+import Inventory from '../Inventory';
+import Home from '../Home';
+import Search from '../Search';
+import Favorites from '../Favorites';
 
 // == Composant
 export default function App() {
@@ -15,64 +24,63 @@ export default function App() {
             exact
             path="/"
           >
-            <div className="title">Home Content</div>
-            <h1>Composant : App</h1>
+            <Home />
           </Route>
           <Route
             key="Recherche"
             exact
             path="/search"
           >
-            <div className="title">Recherche PAGE</div>
-            <h1>Composant : App</h1>
+            <Search />
           </Route>
           <Route
             key="Créer"
             exact
             path="/create"
           >
-            <div className="title">Créer un nouvel inventaire PAGE</div>
-            <h1>Composant : App</h1>
+            <NewInventory />
           </Route>
           <Route
             key="Inventories"
             exact
             path="/inventories"
           >
-            <div className="title">Tous les inventaires PAGE</div>
-            <h1>Composant : App</h1>
+            <Inventories />
+          </Route>
+          <Route
+            key="Inventory"
+            exact
+            path="/inventory/:id"
+          >
+            <Inventory />
           </Route>
           <Route
             key="Templates"
             exact
             path="/templates"
           >
-            <div className="title">Tous les templates PAGE</div>
-            <h1>Composant : App</h1>
+            <Templates />
           </Route>
           <Route
             key="Favoris"
             exact
             path="/favorites"
           >
-            <div className="title">Tous les templates favoris PAGE</div>
-            <h1>Composant : App</h1>
+            <Favorites />
           </Route>
           <Route
             key="Paramètres"
             exact
             path="/settings"
           >
-            <div className="title">Paramètres PAGE</div>
-            <h1>Composant : App</h1>
+            <Settings />
           </Route>
           <Route
             key="Profil"
             exact
             path="/myProfil"
           >
-            <div className="title">Profil utilisateur PAGE</div>
-            <h1>Composant : App</h1>
+            <Profil />
           </Route>
         </Switch>
       </div>
