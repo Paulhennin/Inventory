@@ -1,0 +1,23 @@
+@use 'reset';
+@use 'vars';
+@use 'SideBar';
+
+body {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  font-family: sans-serif;
+}
+
+.main {
+  position: absolute;
+  height: 100%;
+  width: calc(100% - 78px);
+  left: 78px;
+  transition: all 0.5s ease;
+  padding: 10px;
+  background-color: #aaa;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
