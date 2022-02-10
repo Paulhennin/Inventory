@@ -1,6 +1,7 @@
 @use 'reset';
 @use 'vars';
 @use 'SideBar';
+@use 'Inventories';
 
 body {
   position: relative;
@@ -16,7 +17,7 @@ body {
   width: calc(100% - 78px);
   left: 78px;
   transition: all 0.5s ease;
-  padding: 10px;
+  padding: 0px;
   background-color: #aaa;
 }
 
