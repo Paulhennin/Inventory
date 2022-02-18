@@ -1,0 +1,88 @@
+
+.lineinput {
+  margin: 20px;
+  position: relative;
+  & span {
+    display: block;
+    position: absolute;
+    background-color: white;
+  }
+
+  &-line-1, &-line-3 {
+    width: 2px;
+    height: 100%;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.5s;
+  }
+
+  &-line-2, &-line-4 {
+    width: 100%;
+    height: 2px;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.5s;
+    
+  }
+  // LEFT LINE
+  &-line-1 {
+    left:0;
+    bottom:0;
+  }
+  &:focus-within &-line-1 {
+    transform: scaleY(1);
+    transform-origin: bottom;
+    transition: transform 0.5s;
+  }
+  // BOTTOM LINE
+  &-line-2 {
+    left:0;
+    bottom:0;
+  
+  }
+  &:focus-within &-line-2 {
+    transform: scaleX(1);
+    transform-origin: left;
+    transition: transform 0.5s;
+  }
+  
+  // RIGHT LINE
+  &-line-3 {
+    right:0;
+    bottom:0;
+    transition-delay: 0.5s;
+    
+  }
+  &:focus-within &-line-3 {
+    transform: scaleY(1);
+    transform-origin: bottom;
+    transition: transform 0.5s;
+    transition-delay: 0.5s;
+  }
+  
+  // TOP LINE
+  &-line-4 {
+    left:0;
+    top:0;
+    transition-delay: 0.5s;
+    
+  }
+  &:focus-within &-line-4 {
+    transform: scaleX(1);
+    transform-origin: left;
+    transition: transform 0.5s;
+    transition-delay: 0.5s;
+    
+  }
+
+  &-input {
+    outline: none;
+    border: none;
+    background-color: #11101d;
+    height: 3rem;
+    width: 400px;
+    padding-left: 1rem;
+    font-size: 1.5rem;
+    color: white;
+  }
+}

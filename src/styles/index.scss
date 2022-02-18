@@ -2,6 +2,8 @@
 @use 'vars';
 @use 'SideBar';
 @use 'Inventories';
+@use 'NewInventory';
+@use 'LineInput';
 
 body {
   position: relative;
