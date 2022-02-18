@@ -4,11 +4,17 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-
+  overflow: auto;
   &_title {
     font-size: 3.5rem;
     font-weight: bold;
     color: #11101d;
     margin: 1rem;
+  }
+
+  &_error {
+    color: #8f0000;
+    font-style: italic;
+    margin: 0.2rem 0 1rem 0;
   }
 }
