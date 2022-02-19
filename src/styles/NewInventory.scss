@@ -11,6 +11,32 @@
     color: #11101d;
     margin: 1rem;
   }
+  &_form {
+    width: 80%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    &_mainblock {
+      width: 100%;
+      border-bottom: 1px solid #11101d;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      // box-shadow: 2px 2px 2px rgba(10,10,10,0.5);
+    }
+    &_secondblock {
+      margin-top: 1rem;
+      width: 60%;
+      display: grid;
+      grid-template-columns: repeat(2,50%);
+    }
+    &_buttonblock {
+      position: relative;
+      width: 60%;
+      height: 200px;
+      margin: 1.5rem;
+    }
+  }
 
   &_error {
     color: #8f0000;

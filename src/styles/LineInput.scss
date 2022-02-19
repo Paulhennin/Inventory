@@ -84,8 +84,27 @@
     padding-left: 1rem;
     font-size: 1.5rem;
     color: white;
+
+    &_second {
+      outline: none;
+      border: none;
+      background-color: #11101d;
+      height: 2rem;
+      width: 250px;
+      padding-left: 1rem;
+      font-size: 1.5rem;
+      color: white;
+
+    }
   }
-}
-input[type=number] {
-  -moz-appearance: textfield;
+  &_second {
+    margin: 10px;
+  }
+  &_block {
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
