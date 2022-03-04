@@ -1,0 +1,98 @@
+.inventory_section {
+  display: grid;
+  grid-template-columns: repeat(2,50%);
+  width: 100%;
+  height: 100%;
+  
+  &_bag {
+    background-color: #4a4a4e;
+    width: 400px;
+    height: 300px;
+    margin: 2rem;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px #11101d;
+
+    &_title {
+      display: flex;
+      height: 4rem;
+      width: 100%;
+      background-color: #11101d;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    &_items {
+      display: grid;
+      grid-template-columns: 60% 40%;
+      color: white;
+      border-bottom: 1px solid black;
+      height: 3rem;
+      line-height: 3rem;
+      &_list {
+        display: grid;
+        grid-template-columns: 60% 40%;
+        color: white;
+        border-bottom: 1px solid black;
+        &_nb {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      &_name {
+        padding-left: 15px;
+      }
+
+     &_buttons { 
+      display: flex;
+      flex-direction: column;
+      padding: 0 5px;
+      &_numbers {
+        display: flex;
+        justify-content: space-around;
+        width:100%;
+      }
+      &_nbToTake {
+
+      }
+
+      &_nbInBag {
+
+      }
+    }
+
+      &_nb {
+        display: flex;
+        width: 100%;
+        justify-content: space-around;
+        align-items: center;
+        border-bottom: 1px solid black;
+      }
+
+    }
+  }
+}
+.allTaken {
+  background-color: lightgreen;
+  width: 100%;
+  color: #11101d;
+}
+
+.inventory_button {
+  background-color: #11101d;
+  color: white;
+  width: 30px;
+  height: 1.3rem;
+  &_minus {
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+  }
+  &_add {
+    border-top-right-radius: 50%;
+    border-top-left-radius: 50%;
+
+  }
+}

@@ -12,6 +12,80 @@ import Home from '../Home';
 import Search from '../Search';
 import Favorites from '../Favorites';
 
+const json = [
+  {
+    id: '24sdq341c24s',
+    name: 'Rome',
+    date: '10/10/2021',
+    bags: [
+      {
+        name: 'Sac à dos',
+        items: [
+          {
+            item: 'PC',
+            numbersToTake: '1',
+            numbersInBag: '1',
+            allInBag: true,
+          },
+          {
+            item: 'Caleçon',
+            numbersToTake: '8',
+            numbersInBag: '4',
+            allInBag: false,
+          },
+          {
+            item: 'Chaussettes',
+            numbersToTake: '8',
+            numbersInBag: '8',
+            allInBag: true,
+          },
+        ],
+      },
+      {
+        name: 'Valise',
+        items: [
+          {
+            item: 'Pulls',
+            numbersToTake: '8',
+            numbersInBag: '4',
+            allInBag: false,
+          },
+          {
+            item: 'Tee-shirts',
+            numbersToTake: '8',
+            numbersInBag: '8',
+            allInBag: true,
+          },
+        ],
+      },
+      {
+        name: 'Sac à dos',
+        items: [],
+      },
+    ],
+  },
+  {
+    id: '24sdq341c24a',
+    name: 'Australie',
+    date: '10/10/2020',
+  },
+  {
+    id: '24sdq341c24b',
+    name: 'Japon',
+    date: '10/10/2019',
+  },
+  {
+    id: '24sdq341c2d4',
+    name: 'Canada',
+    date: '10/10/2018',
+  },
+  {
+    id: '24sdq341c24H',
+    name: 'US',
+    date: '10/10/2017',
+  },
+];
+
 // == Composant
 export default function App() {
   return (
@@ -45,14 +119,18 @@ export default function App() {
             exact
             path="/inventories"
           >
-            <Inventories />
+            <Inventories
+              json={json}
+            />
           </Route>
           <Route
             key="Inventory"
             exact
             path="/inventory/:id"
           >
-            <Inventory />
+            <Inventory
+              json={json}
+            />
           </Route>
           <Route
             key="Templates"

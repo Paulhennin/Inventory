@@ -3,6 +3,8 @@
 @use 'SideBar';
 @use 'Inventories';
 @use 'NewInventory';
+@use 'Inventory';
+
 @use 'LineInput';
 @use 'ChasingLightButtons';
 
@@ -13,7 +15,9 @@ body {
   overflow: hidden;
   font-family: sans-serif;
 }
-
+* {
+  box-sizing: border-box;
+}
 .main {
   position: absolute;
   height: 100%;
