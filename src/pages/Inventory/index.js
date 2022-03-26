@@ -1,70 +1,112 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
+import {
+  addIndex,
+  assoc,
+  assocPath,
+  compose,
+  equals,
+  map,
+  path,
+  prop,
+} from 'ramda';
+
+const mapIndexed = addIndex(map);
+
+const handleItemChange = (item) => {
+  console.log(item);
+  const hiddenItem = document.getElementById(item);
+  hiddenItem.classList.toggle('hidden');
+};
 
 export default function Inventory({ json }) {
   const { id } = useParams();
   const inventory = json.find((list) => list.id === id);
-  let list;
-  if (inventory) {
-    const { bags } = inventory;
-    list = bags.map((bag) => {
-      const { items } = bag;
-      const itemList = items.map(({
-        item,
-        numbersToTake,
-        numbersInBag,
-        allInBag,
-      }) => {
-        console.log('');
-        return (
-          <>
-            <span className="inventory_section_bag_items">
-              <span className="inventory_section_bag_items_name">
-                {item}
-              </span>
-              <span className={`inventory_section_bag_items_nb ${allInBag && 'allTaken'}`}>
-                <span className="inventory_section_bag_items_buttons">
-                  <button type="button" className="inventory_button inventory_button_add">+</button>
-                  <button type="button" className="inventory_button inventory_button_minus">-</button>
-                </span>
+  const [state, setState] = useState(inventory);
 
-                <span className="inventory_section_bag_items_buttons_numbers">
-                  <span className="inventory_section_bag_items_buttons_nbInBag">
-                    {numbersInBag}
-                  </span>
-                  <span className="inventory_section_bag_items_buttons_nbToTake">
-                    {numbersToTake}
-                  </span>
-                </span>
+  const onChangeNumber = (e, indexObject, indexContainer) => {
+    console.log(e.target.name);
+    setState(assocPath(['bags', indexContainer, 'items', indexObject, e.target.name], e.target.value), state);
 
-                <span className="inventory_section_bag_items_buttons">
-                  <button type="button" className="inventory_button inventory_button_add">+</button>
-                  <button type="button" className="inventory_button inventory_button_minus">-</button>
-                </span>
+    if (equals('numbersInBag', e.target.name)) {
+      const nbToTake = path(['bags', indexContainer, 'items', indexObject, 'numbersToTake'], state);
 
-              </span>
-            </span>
-          </>
-        );
-      });
-      return (
-        <div className="inventory_section_bag">
-          <div className="inventory_section_bag_title">
-            {bag.name}
-          </div>
-          {itemList}
-        </div>
-      );
-    });
-  }
-  console.log(list);
+      if (equals(e.target.value, nbToTake)) {
+        console.log('coucou');
+        setState(compose(
+          assocPath(['bags', indexContainer, 'items', indexObject, e.target.name], e.target.value),
+          assocPath(['bags', indexContainer, 'items', indexObject, 'allInBag'], true),
+        )(state));
+      }
+      else {
+        setState(compose(
+          assocPath(['bags', indexContainer, 'items', indexObject, 'allInBag'], false),
+        )(state));
+      }
+    }
+  };
+  console.log(state);
+
+  const handleMaxItem = (indexObject, indexContainer, numbersToTake, item) => {
+    setState(compose(
+      assocPath(['bags', indexContainer, 'items', indexObject, 'numbersInBag'], numbersToTake),
+      assocPath(['bags', indexContainer, 'items', indexObject, 'allInBag'], true),
+    )(state));
+    handleItemChange(item);
+  };
+
   return (
     <>
       <div className="title">Afficher un seul inventaire PAGE</div>
       <h1>Composant : App</h1>
       <section className="inventory_section">
-        {list && list}
+        {mapIndexed((container, indexContainer) => {
+          const { items, containerName } = container;
+          return (
+            <>
+              <div className="inventory_section_list">
+                <div className="inventory_section_list_name">
+                  {containerName}
+                </div>
+                <div className="inventory_section_list_items">
+                  {mapIndexed((object, indexObject) => {
+                    const {
+                      item,
+                      allInBag,
+                      numbersInBag,
+                      numbersToTake,
+                    } = object;
+                    return (
+                      <>
+                        <div className={`inventory_section_list_item ${!allInBag ? 'items_border' : ''}`} style={indexObject % 2 === 0 ? { backgroundColor: '#BBB' } : {}}>
+                          <div className="inventory_section_list_item_name" onDoubleClick={() => handleItemChange(item)}>
+                            {item}
+                          </div>
+                          <div className="inventory_section_list_item_numbers">
+                            <span style={{ width: '45%', textAlign: 'center' }}>
+                              {numbersInBag}
+                            </span>
+                            <span style={{ width: '45%', textAlign: 'center' }}>
+                              {numbersToTake}
+                            </span>
+                          </div>
+                        </div>
+                        <div className="hidden" id={item}>
+                          <input type="text" name="numbersInBag" placeholder={numbersInBag} onChange={(e) => onChangeNumber(e, indexObject, indexContainer)} value={numbersInBag} />
+                          <input type="text" name="numbersToTake" placeholder={numbersToTake} onChange={(e) => onChangeNumber(e, indexObject, indexContainer)} value={numbersToTake} />
+                          
+                          <button type="button" onClick={() => handleMaxItem(indexObject, indexContainer, numbersToTake, item)}>Max</button>
+                          <button type="button" onClick={() => handleItemChange(item)}>Ok</button>
+                        </div>
+                      </>
+                    );
+                  })(items)}
+                </div>
+              </div>
+            </>
+          );
+        })(prop('bags', state))}
       </section>
     </>
   );

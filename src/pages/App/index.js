@@ -19,7 +19,7 @@ const json = [
     date: '10/10/2021',
     bags: [
       {
-        name: 'Sac à dos',
+        containerName: 'Sac à dos',
         items: [
           {
             item: 'PC',
@@ -42,7 +42,7 @@ const json = [
         ],
       },
       {
-        name: 'Valise',
+        containerName: 'Valise',
         items: [
           {
             item: 'Pulls',
@@ -59,8 +59,15 @@ const json = [
         ],
       },
       {
-        name: 'Sac à dos',
-        items: [],
+        containerName: 'Sac à dos',
+        items: [
+          {
+            item: 'cables',
+            numbersToTake: '8',
+            numbersInBag: '8',
+            allInBag: true,
+          },
+        ],
       },
     ],
   },

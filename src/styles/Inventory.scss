@@ -3,96 +3,54 @@
   grid-template-columns: repeat(2,50%);
   width: 100%;
   height: 100%;
-  
-  &_bag {
-    background-color: #4a4a4e;
-    width: 400px;
-    height: 300px;
-    margin: 2rem;
-    border-radius: 10px;
-    box-shadow: 5px 5px 5px #11101d;
+  padding: 15px;
+  &_list {
+    background-color: #d3d3d3;
+    width: 90%;
+    height: 90%;
 
-    &_title {
-      display: flex;
-      height: 4rem;
-      width: 100%;
-      background-color: #11101d;
-      justify-content: center;
-      align-items: center;
-      color: white;
+    &_name {
       font-size: 1.5rem;
       font-weight: bold;
-    }
-
-    &_items {
-      display: grid;
-      grid-template-columns: 60% 40%;
+      width: 100%;
+      text-align: center;
+      padding: 10px 0;
+      background-color: #11101d;
       color: white;
-      border-bottom: 1px solid black;
-      height: 3rem;
-      line-height: 3rem;
-      &_list {
-        display: grid;
-        grid-template-columns: 60% 40%;
-        color: white;
-        border-bottom: 1px solid black;
-        &_nb {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-        }
-      }
-
-      &_name {
-        padding-left: 15px;
-      }
-
-     &_buttons { 
+    }
+    &_items {
+      width: 100%;
       display: flex;
       flex-direction: column;
-      padding: 0 5px;
+
+    }
+    &_item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 60px;
+      &_name {
+
+      }
+
       &_numbers {
+        width:20%;
+        padding: 0 15px;
         display: flex;
-        justify-content: space-around;
-        width:100%;
+        justify-content: space-between;
       }
-      &_nbToTake {
-
-      }
-
-      &_nbInBag {
-
-      }
-    }
-
-      &_nb {
-        display: flex;
-        width: 100%;
-        justify-content: space-around;
-        align-items: center;
-        border-bottom: 1px solid black;
-      }
-
     }
   }
 }
-.allTaken {
-  background-color: lightgreen;
-  width: 100%;
-  color: #11101d;
+
+.items_border {
+  border: 1px solid #C80000;
 }
 
-.inventory_button {
-  background-color: #11101d;
-  color: white;
-  width: 30px;
-  height: 1.3rem;
-  &_minus {
-    border-bottom-left-radius: 50%;
-    border-bottom-right-radius: 50%;
-  }
-  &_add {
-    border-top-right-radius: 50%;
-    border-top-left-radius: 50%;
+.hidden {
+  display: none;
+}
 
-  }
+.visible {
+  display: block;
 }

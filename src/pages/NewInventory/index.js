@@ -5,9 +5,25 @@ import {
   times,
   assocPath,
   pipe,
+  map
 } from 'ramda';
 import Input from 'src/components/form/Input';
 import ChasingLightButtons from 'src/components/buttons/ChasingLightButtons';
+
+const formatedData = (state) => {
+  const { bags, inventoryName } = state;
+  const bagsNames = Object.values(bags);
+  const data = {
+    name: inventoryName,
+    bags: map((bag) => {
+      console.log('');
+      return {
+        name: bag,
+      };
+    })(bagsNames),
+  };
+  console.log(data);
+};
 export default function NewInventory() {
   const [state, setState] = useState({
     inventoryName: '',
@@ -32,6 +48,8 @@ export default function NewInventory() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('ça fait rien pour le moment !');
+    const mergedData = formatedData(state);
+    console.log(mergedData);
   };
   console.log(state);
   return (
@@ -79,7 +97,7 @@ export default function NewInventory() {
                 classname="lineinput_second"
                 inputClassName="lineinput-input_second"
                 blocClassName="lineinput_block"
-                placeholder="Type de sac"
+                placeholder="Type de rangement"
                 value={state.bags[index + 1]}
                 onChange={(v) => setState(assocPath(['bags', `${index + 1}`], v.target.value))}
               />
@@ -87,7 +105,7 @@ export default function NewInventory() {
           })(state.nbBags) : ''}
         </div>
         <div className="new-inventory-section_form_buttonblock">
-          <ChasingLightButtons onClick={handleSubmit} />
+          <ChasingLightButtons click={handleSubmit} />
         </div>
       </form>
     </div>
